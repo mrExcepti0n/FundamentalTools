@@ -5,13 +5,21 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{81C8174C-844F-4774-A8A7-73E3A6D1105D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityBlock.Abstraction", "Security\SecurityBlock.Abstraction\SecurityBlock.Abstraction.csproj", "{24EA2A56-59A4-4E8D-BF0A-43900A1A630D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityBlock.Abstraction", "Security\SecurityBlock.Abstraction\SecurityBlock.Abstraction.csproj", "{24EA2A56-59A4-4E8D-BF0A-43900A1A630D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityBlock", "Security\SecurityBlock\SecurityBlock.csproj", "{2DC5BA9D-180D-41E8-9F7A-55334DDC49C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityBlock", "Security\SecurityBlock\SecurityBlock.csproj", "{2DC5BA9D-180D-41E8-9F7A-55334DDC49C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityBlockCore", "Security\SecurityBlockCore\SecurityBlockCore.csproj", "{64F7A7DA-18BB-43D8-84EB-BC06C6D8B87D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityBlockCore", "Security\SecurityBlockCore\SecurityBlockCore.csproj", "{64F7A7DA-18BB-43D8-84EB-BC06C6D8B87D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityBlock.Tests", "Security\SecurityBlock.Tests\SecurityBlock.Tests.csproj", "{ADDC2BE9-B3B7-4E78-BFC5-0F2BBE2ECDFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceInfrastructure", "ServiceInfrastructure", "{87C14BE4-89F7-4CEC-AEC2-2DB1633ECBF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceProvider", "ServiceInfrastructure\ServiceProvider\ServiceProvider.csproj", "{67547B21-06BA-444F-BF41-B4B78907FA4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{CD709F6B-B75F-41C8-A3BC-EF6892460472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfTestService", "Samples\WcfTestService\WcfTestService.csproj", "{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +43,14 @@ Global
 		{ADDC2BE9-B3B7-4E78-BFC5-0F2BBE2ECDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADDC2BE9-B3B7-4E78-BFC5-0F2BBE2ECDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADDC2BE9-B3B7-4E78-BFC5-0F2BBE2ECDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67547B21-06BA-444F-BF41-B4B78907FA4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67547B21-06BA-444F-BF41-B4B78907FA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67547B21-06BA-444F-BF41-B4B78907FA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67547B21-06BA-444F-BF41-B4B78907FA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +60,8 @@ Global
 		{2DC5BA9D-180D-41E8-9F7A-55334DDC49C7} = {81C8174C-844F-4774-A8A7-73E3A6D1105D}
 		{64F7A7DA-18BB-43D8-84EB-BC06C6D8B87D} = {81C8174C-844F-4774-A8A7-73E3A6D1105D}
 		{ADDC2BE9-B3B7-4E78-BFC5-0F2BBE2ECDFC} = {81C8174C-844F-4774-A8A7-73E3A6D1105D}
+		{67547B21-06BA-444F-BF41-B4B78907FA4C} = {87C14BE4-89F7-4CEC-AEC2-2DB1633ECBF2}
+		{5A2C3EC6-C9F7-4074-9E7B-ADE3EFC3BEBB} = {CD709F6B-B75F-41C8-A3BC-EF6892460472}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1200BE21-223A-4504-BB4F-77115353C6DE}
