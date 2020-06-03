@@ -1,16 +1,14 @@
-﻿using SecurityBlock.Abstraction.IdentityProvider;
-using SecurityBlock.IdentityProvider;
-using System;
+﻿using System;
 using System.Linq;
 using System.Security;
+using SecurityBlock.Abstraction.Model;
 
-
-namespace SecurityBlock.Abstraction.SecurityProvider
+namespace SecurityBlock.SecurityProvider
 {
     public class CustomPermission : IPermission
     {
 
-        private SecurityAccessRule[] _securityAccessRules;
+        private readonly SecurityAccessRule[] _securityAccessRules;
         public CustomPermission(SecurityAccessRule accessRule)
         {
             _securityAccessRules = new[] { accessRule };

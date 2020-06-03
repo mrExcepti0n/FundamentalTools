@@ -1,6 +1,5 @@
 ﻿using SecurityBlock.Abstraction.IdentityProvider;
 using SecurityBlock.Abstraction.Model;
-using SecurityBlock.Abstraction.SecurityProvider;
 using System;
 using System.Security;
 using System.Security.Permissions;
@@ -20,20 +19,19 @@ namespace SecurityBlock.SecurityProvider
 
         public SecurityAccessObjectEnum AccessObject
         {
-            get { return _securityAccessRule.AccessObject; }
-            set { _securityAccessRule.AccessObject = value; }
+            get => _securityAccessRule.AccessObject;
+            set => _securityAccessRule.AccessObject = value;
         }
 
         public SecurityAccessActionEnum AccessAction
         {
-            get { return _securityAccessRule.Action; }
-            set { _securityAccessRule.Action = value; }
+            get => _securityAccessRule.Action; 
+            set => _securityAccessRule.Action = value; 
         }
 
         public override IPermission CreatePermission()
         {
             IPermission perm = new CustomPermission(_securityAccessRule);
-
             return perm;
         }
     }

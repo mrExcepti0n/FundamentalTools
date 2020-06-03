@@ -1,31 +1,35 @@
 ﻿using SecurityBlock.Abstraction.IdentityProvider;
 
-namespace SecurityBlock.IdentityProvider
+namespace SecurityBlock
 {
     public class IdentityProviderFactory
     {
-        private static IIdentityProvider instance = null;
-        private static readonly object _lockObject = new object();
+        private static IIdentityProvider _instance = null;
+        private static readonly object LockObject = new object();
 
         public static IIdentityProvider Get {
             get
             {
-                lock (_lockObject)
+                if (_instance == null)
                 {
-                    if (instance == null)
+                    lock (LockObject)
                     {
-                        instance = new IdentityProvider();              
+                        if (_instance == null)
+                        {
+                            _instance = new IdentityProvider();
+                        }
                     }
                 }
-                return instance;
+
+                return _instance;
             }
         }
 
         public static void Init(IIdentityProvider identityProvider)
         {
-            lock (_lockObject)
+            lock (LockObject)
             {
-                instance = identityProvider;
+                _instance = identityProvider;
             }
         }
     }

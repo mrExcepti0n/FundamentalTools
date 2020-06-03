@@ -18,6 +18,8 @@ namespace SecurityBlock.Abstraction.IdentityProvider
             _firstName = "Иванов";
             _lastName = "Иван";
             _patronymic = "Иванович";
+            _isAdminOfCurrentOrganization = false;
+
         }
 
         private int? _legalEntityId;
@@ -40,16 +42,16 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 
         private IEnumerable<Organization> _organizations;
         public override IEnumerable<Organization> Organizations => _organizations;
-        public override IEnumerable<Claim> Cliams => new List<Claim>();
+        public override IEnumerable<Claim> Claims => new List<Claim>();
 
 
         private int? _specialRoleType;
         public override int? SpecialRoleType => _specialRoleType;
 
-        private bool? _isAdminOfCurentOrganization;
-        public override bool? IsAdminOfCurentOrganization => _isAdminOfCurentOrganization;
-        private int? _adminWorkerId;
+        private bool? _isAdminOfCurrentOrganization;
+        public override bool? IsAdminOfCurrentOrganization => _isAdminOfCurrentOrganization;
 
+        private int? _adminWorkerId;
         public override int? AdminWorkerId => _adminWorkerId;
 
         private string _adminAccount;
@@ -87,10 +89,10 @@ namespace SecurityBlock.Abstraction.IdentityProvider
                                     .Cast<SecurityAccessObjectEnum>()
                                     .Select(sao => new SecurityAccessRule(sao, SecurityAccessActionEnum.RW));
 
-            return WithSecutiryAccessRights(securityRights);
+            return WithSecurityAccessRights(securityRights.ToArray());
         }
 
-        public TestIdentityProvider WithSecutiryAccessRights(IEnumerable<SecurityAccessRule> securityAccessRights)
+        public TestIdentityProvider WithSecurityAccessRights(params SecurityAccessRule[] securityAccessRights)
         {
             _securityAccessRights = securityAccessRights;
             return this;
@@ -114,9 +116,9 @@ namespace SecurityBlock.Abstraction.IdentityProvider
             return this;
         }
 
-        public TestIdentityProvider WithIsAdminOfCurentOrganization(bool isAdminOfCurentOrganization)
+        public TestIdentityProvider WithIsAdminOfCurrentOrganization(bool isAdminOfCurrentOrganization)
         {
-            _isAdminOfCurentOrganization = isAdminOfCurentOrganization;
+            _isAdminOfCurrentOrganization = isAdminOfCurrentOrganization;
             return this;
         }
         public TestIdentityProvider WithAdminWorkerId(int? adminWorkerId)
@@ -136,7 +138,7 @@ namespace SecurityBlock.Abstraction.IdentityProvider
             {
                 _securityAccessRights = _securityAccessRights.Where(sar => sar.AccessObject != SecurityAccessObjectEnum.PersonalData).ToArray();
             }
-            else if (!_securityAccessRights.Any(sar => sar.AccessObject == SecurityAccessObjectEnum.PersonalData))
+            else if (_securityAccessRights.All(sar => sar.AccessObject != SecurityAccessObjectEnum.PersonalData))
             {
                 _securityAccessRights = _securityAccessRights.Union(new SecurityAccessRule[] {
                     new SecurityAccessRule(SecurityAccessObjectEnum.PersonalData, SecurityAccessActionEnum.RW)

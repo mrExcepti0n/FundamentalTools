@@ -7,12 +7,15 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 {
     public interface IIdentityProvider
     {
+
+        IEnumerable<Claim> Claims { get; }
+
         int? LegalEntityId { get; }
         string LegalEntityOGRN { get; }
 
         int? SpecialRoleType { get; }
         int? WorkerId { get; }
-        bool? IsAdminOfCurentOrganization { get; }
+        bool? IsAdminOfCurrentOrganization { get; }
         int? AdminWorkerId { get; }
         string AdminAccount { get; }
 
@@ -32,6 +35,5 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 
         bool HasAccessToPersonalData();
 
-        IEnumerable<Claim> Cliams { get; }
     }
 }

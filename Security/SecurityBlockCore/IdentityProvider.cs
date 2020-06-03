@@ -1,22 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
-using SecurityBlock.Abstraction.IdentityProvider;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
+using Microsoft.AspNetCore.Http;
+using SecurityBlock.Abstraction.IdentityProvider;
 
-namespace SecurityBlockCore.IdentityProvider
+namespace SecurityBlockCore
 {
     public class BillingIdentityProvider : AbstractClaimsIdentityProvider
     {
-        public BillingIdentityProvider(HttpContext httpContenxt)
+        public BillingIdentityProvider(HttpContext httpContext)
         {
-            _httpContext = httpContenxt;
+            _httpContext = httpContext;
         }
 
-        private HttpContext _httpContext;
+        private readonly HttpContext _httpContext;
 
-        public override IEnumerable<Claim> Cliams => _httpContext.User.Claims;
+        public override IEnumerable<Claim> Claims => _httpContext.User.Claims;
 
     }
 }

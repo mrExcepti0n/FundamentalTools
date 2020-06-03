@@ -17,8 +17,9 @@ namespace ServiceProvider.WcfServiceHost
 
         protected override void OnOpening()
         {
-            Description.Behaviors.Add(new MessageLoggingServiceBehavior(_requestLogger));
             Description.Behaviors.Add(new ErrorHandlerServiceBehavior());
+            Description.Behaviors.Add(new MessageLoggingServiceBehavior(_requestLogger));
+            
 
             base.OnOpening();
         }

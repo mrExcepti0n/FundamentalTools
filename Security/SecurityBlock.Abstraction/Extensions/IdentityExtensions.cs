@@ -1,7 +1,6 @@
 ﻿using SecurityBlock.Abstraction.Model;
 
-
-namespace SecurityBlock.Abstraction
+namespace SecurityBlock.Abstraction.Extensions
 {
     public static class IdentityExtensions
     {
@@ -26,7 +25,7 @@ namespace SecurityBlock.Abstraction
         public static bool NeedDocument(this SecurityAccessActionEnum accessRight)
         {
             if (accessRight == SecurityAccessActionEnum.RW || accessRight == SecurityAccessActionEnum.D ||
-                accessRight == SecurityAccessActionEnum.I || accessRight == SecurityAccessActionEnum.U || accessRight == SecurityAccessActionEnum.W)
+                accessRight == SecurityAccessActionEnum.C || accessRight == SecurityAccessActionEnum.U || accessRight == SecurityAccessActionEnum.W)
             {
                 return false;
             }

@@ -1,7 +1,6 @@
-﻿using SecurityBlock.Abstraction.Model;
-using System;
+﻿using System;
 
-namespace SecurityBlock.Abstraction.IdentityProvider
+namespace SecurityBlock.Abstraction.Model
 {
     public class SecurityAccessRule
     {

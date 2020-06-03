@@ -87,12 +87,12 @@ namespace SecurityBlock.Abstraction.Tools
 
         public static string GetLegalEntityOgrn(this IEnumerable<Claim> claims)
         {
-            return claims.GetClaim(CustomClaimTypes.CurrentLegalEntityOGRN);
+            return claims.GetClaim(CustomClaimTypes.CurrrentLegalEntityOGRN);
         }
 
         public static IEnumerable<SecurityAccessRule> GetSecurityRights(this IEnumerable<Claim> claims)
         {
-            return claims.Where(cl => cl.Type == CustomClaimTypes.SecutiryAccessRight).Select(cl => new SecurityAccessRule(cl.Value)).ToArray();
+            return claims.Where(cl => cl.Type == CustomClaimTypes.SecurityAccessRight).Select(cl => new SecurityAccessRule(cl.Value)).ToArray();
         }
 
         public static IEnumerable<Organization> GetOrganizations(this IEnumerable<Claim> claims)

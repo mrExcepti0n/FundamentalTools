@@ -10,6 +10,8 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 {
     public abstract class AbstractIdentityProvider : IIdentityProvider
     {
+        public abstract IEnumerable<Claim> Claims { get; }
+
         public abstract int? LegalEntityId { get;  }
 
         public abstract string LegalEntityOGRN { get; }
@@ -18,7 +20,7 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 
         public abstract int? WorkerId { get; }
 
-        public abstract bool? IsAdminOfCurentOrganization { get; }
+        public abstract bool? IsAdminOfCurrentOrganization { get; }
 
         public abstract int? AdminWorkerId { get; }
 
@@ -54,21 +56,19 @@ namespace SecurityBlock.Abstraction.IdentityProvider
 
         public virtual bool NeedDocumentForSaveOperation(SecurityAccessRule rule)
         {
-            if ((rule.Action & SecurityAccessActionEnum.WD) == 0)
+            if ((rule.Action & SecurityAccessActionEnum.WWD) == 0)
             {
                 return false;
             }
             var rights = SecurityAccessRights.SingleOrDefault(sar => sar.AccessObject == rule.AccessObject);
-            return rights.Action.NeedDocument();
+
+            return rights != null && rights.Action.NeedDocument();
         }
 
         public virtual bool HasAccessToPersonalData()
         {
             return SecurityAccessRights.SingleOrDefault(sar => sar.AccessObject == SecurityAccessObjectEnum.PersonalData) != null;
         }
-
-
-        public abstract IEnumerable<Claim> Cliams { get; }
 
     }
   

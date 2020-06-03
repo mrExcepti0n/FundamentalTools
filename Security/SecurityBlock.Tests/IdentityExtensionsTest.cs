@@ -2,6 +2,7 @@
 using SecurityBlock.Abstraction.IdentityProvider;
 using SecurityBlock.Abstraction.Model;
 using System.Collections.Generic;
+using SecurityBlock.Abstraction.Extensions;
 using Xunit;
 
 namespace SecurityBlock.Tests
@@ -27,14 +28,14 @@ namespace SecurityBlock.Tests
         [Fact]
         public void NeedDocumentForSaveOperation0()
         {
-            var securityRights = new List<SecurityAccessRule> {new SecurityAccessRule
+            var securityRights = new [] {new SecurityAccessRule
             {
                 AccessObject = SecurityAccessObjectEnum.Administration,
                 Action = (SecurityAccessActionEnum) 113
             }};
 
             var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Administration, SecurityAccessActionEnum.RW);
-            var result = new TestIdentityProvider().WithSecutiryAccessRights(securityRights).HasAccess(securityRule);
+            var result = new TestIdentityProvider().WithSecurityAccessRights(securityRights).HasAccess(securityRule);
             Assert.True(result);
         }
 
@@ -43,15 +44,15 @@ namespace SecurityBlock.Tests
         [Fact]
         public void NeedDocumentForSaveOperation()
         {
-            var securityRights = new List<SecurityAccessRule> {new SecurityAccessRule
+            var securityRights = new [] {new SecurityAccessRule
             {
                 AccessObject = SecurityAccessObjectEnum.Agreement,
-                Action = SecurityAccessActionEnum.I
+                Action = SecurityAccessActionEnum.C
             }};
 
             var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Agreement, SecurityAccessActionEnum.IWD);
 
-            var result = new TestIdentityProvider().WithSecutiryAccessRights(securityRights)
+            var result = new TestIdentityProvider().WithSecurityAccessRights(securityRights)
                 .NeedDocumentForSaveOperation(securityRule);
             Assert.False(result);
         }
@@ -60,7 +61,7 @@ namespace SecurityBlock.Tests
         [Fact]
         public void NeedDocumentForSaveOperation1()
         {
-            var securityRights = new List<SecurityAccessRule> {new SecurityAccessRule
+            var securityRights = new [] {new SecurityAccessRule
             {
                 AccessObject = SecurityAccessObjectEnum.Agreement,
                 Action = SecurityAccessActionEnum.IWD
@@ -68,7 +69,7 @@ namespace SecurityBlock.Tests
 
             var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Agreement, SecurityAccessActionEnum.WWD);
 
-            var result = new TestIdentityProvider().WithSecutiryAccessRights(securityRights)
+            var result = new TestIdentityProvider().WithSecurityAccessRights(securityRights)
                 .NeedDocumentForSaveOperation(securityRule);
             Assert.True(result);
         }
@@ -76,7 +77,7 @@ namespace SecurityBlock.Tests
         [Fact]
         public void NeedDocumentForSaveOperation2()
         {
-            var securityRights = new List<SecurityAccessRule> {new SecurityAccessRule
+            var securityRights = new [] {new SecurityAccessRule
             {
                 AccessObject = SecurityAccessObjectEnum.Agreement,
                 Action = SecurityAccessActionEnum.IWD
@@ -84,7 +85,7 @@ namespace SecurityBlock.Tests
 
             var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Agreement, SecurityAccessActionEnum.IWD);
 
-            var result = new TestIdentityProvider().WithSecutiryAccessRights(securityRights)
+            var result = new TestIdentityProvider().WithSecurityAccessRights(securityRights)
                 .NeedDocumentForSaveOperation(securityRule);
             Assert.True(result);
         }
@@ -92,10 +93,10 @@ namespace SecurityBlock.Tests
         [Fact]
         public void NeedDocumentForSaveOperation3()
         {
-            var securityRights = new List<SecurityAccessRule> { new SecurityAccessRule() };
-            var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Agreement, SecurityAccessActionEnum.I);
+            var securityRights = new SecurityAccessRule[] { new SecurityAccessRule() };
+            var securityRule = new SecurityAccessRule(SecurityAccessObjectEnum.Agreement, SecurityAccessActionEnum.C);
 
-            var result = new TestIdentityProvider().WithSecutiryAccessRights(securityRights)
+            var result = new TestIdentityProvider().WithSecurityAccessRights(securityRights)
                 .NeedDocumentForSaveOperation(securityRule);
             Assert.False(result);
         }
